@@ -1,0 +1,449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0DC7D27A-B3E0-4FFE-AF54-AD0A27428D1F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>School</RootNamespace>
+    <AssemblyName>School</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AttachedCommandBehavior, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AttachedCommandBehavior.2.0.0.0\lib\net35\AttachedCommandBehavior.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Converters\AbsenceConverter.cs" />
+    <Compile Include="Converters\GradeConverter.cs" />
+    <Compile Include="Converters\MaterialConverter.cs" />
+    <Compile Include="Converters\ClassConverter.cs" />
+    <Compile Include="Converters\StudentConverter.cs" />
+    <Compile Include="Converters\SubjectConverter.cs" />
+    <Compile Include="Converters\TeacherConverter.cs" />
+    <Compile Include="Helpers\RelayCommand.cs" />
+    <Compile Include="Models\Absence.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Actions\Admin\EditClassAction.cs" />
+    <Compile Include="Models\Actions\Admin\EditClassSubjectAction.cs" />
+    <Compile Include="Models\Actions\Admin\EditStudentAction.cs" />
+    <Compile Include="Models\Actions\Admin\EditTeacherAction.cs" />
+    <Compile Include="Models\Actions\Admin\EditTeacherSubjectAction.cs" />
+    <Compile Include="Models\Actions\Master\MasterAction.cs" />
+    <Compile Include="Models\Actions\Teacher\GradeAction.cs" />
+    <Compile Include="Models\Actions\Teacher\MaterialAction.cs" />
+    <Compile Include="Models\Actions\Teacher\TeacherAction.cs" />
+    <Compile Include="Models\Admin.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdminGetAllClasses_Result.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdminGetAllStudents_Result.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdminGetAllTeachers_Result.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Assignment.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Calculate_Result.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Class.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetAllAbsenceBySubject_Result.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetAllAbsencesFromClass_Result.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetAllCompletedSituations_Result.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetAllGradesBySubject_Result.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetAllStudentsInAClass_Result.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetAllSubjectsEligible_Result.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetAllTeacherSubject_Result.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetAllUnjustifiedAbsencesFromClass_Result.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetExpelledStudent_Result.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetMaterialsForStudent_Result.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetMaterialsOfTeacher_Result.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetMaterials_Result.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Grade.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Material.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Person.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SchoolDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SchoolDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SchoolDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SchoolDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SchoolDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Situation_Subject.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Student.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentViewAbsences_Result.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentViewGrades_Result.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentViewMaterials_Result.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StudentViewSubjects_Result.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Subject.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Teacher.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TeacherGetStudentsBySubject_Result.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TeacherViewAllAbsence_Result.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Teacher_Subject.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewAwarded_Result.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewClassHierachy_Result.cs">
+      <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\AbsenceVM.cs" />
+    <Compile Include="ViewModels\AdminVM.cs" />
+    <Compile Include="ViewModels\BaseVM.cs" />
+    <Compile Include="ViewModels\ClassVM.cs" />
+    <Compile Include="ViewModels\GradeVM.cs" />
+    <Compile Include="ViewModels\MaterialVM.cs" />
+    <Compile Include="ViewModels\PersonVM.cs" />
+    <Compile Include="ViewModels\StudentVM.cs" />
+    <Compile Include="ViewModels\SubjectVM.cs" />
+    <Compile Include="ViewModels\TeacherVM.cs" />
+    <Compile Include="ViewModels\UsersControl\Admin\AddClassUserControlVM.cs" />
+    <Compile Include="ViewModels\UsersControl\Admin\AddStudentUserControlVM.cs" />
+    <Compile Include="ViewModels\UsersControl\Admin\AddTeacherSubjectUserControlVM.cs" />
+    <Compile Include="ViewModels\UsersControl\Admin\AddTeacherUserControlVM.cs" />
+    <Compile Include="ViewModels\UsersControl\Admin\AdminUserControlVM.cs" />
+    <Compile Include="ViewModels\UsersControl\Admin\EditClassSubjectUserControlVM.cs" />
+    <Compile Include="ViewModels\UsersControl\Admin\EditClassUserControlVM.cs" />
+    <Compile Include="ViewModels\UsersControl\Admin\EditStudentUserControlVM.cs" />
+    <Compile Include="ViewModels\UsersControl\Admin\EditTeacherSubjectUserControlVM.cs" />
+    <Compile Include="ViewModels\UsersControl\Admin\EditTeacherUserControlVM.cs" />
+    <Compile Include="ViewModels\UsersControl\LogIn\LogInUserControlVM.cs" />
+    <Compile Include="ViewModels\UsersControl\Master\MasterUserControlVM.cs" />
+    <Compile Include="ViewModels\UsersControl\Student\AbsenceUserControlVM.cs" />
+    <Compile Include="ViewModels\UsersControl\Student\GradeUserControlVM.cs" />
+    <Compile Include="ViewModels\UsersControl\Student\MaterialUserControlVM.cs" />
+    <Compile Include="ViewModels\UsersControl\Student\StudentUserControlVM.cs" />
+    <Compile Include="ViewModels\UsersControl\Teacher\AbsenceUserControlVM.cs" />
+    <Compile Include="ViewModels\UsersControl\Teacher\GradeUserControlVM.cs" />
+    <Compile Include="ViewModels\UsersControl\Teacher\MaterialUserControlVM.cs" />
+    <Compile Include="ViewModels\UsersControl\Teacher\TeacherUserControlVM.cs" />
+    <Compile Include="Views\AdminView\AddClassUserControl.xaml.cs">
+      <DependentUpon>AddClassUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminView\AddStudentUserControl.xaml.cs">
+      <DependentUpon>AddStudentUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminView\AddTeacherSubjectUserControl.xaml.cs">
+      <DependentUpon>AddTeacherSubjectUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminView\AddTeacherUserControl.xaml.cs">
+      <DependentUpon>AddTeacherUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminView\AdminUserControl.xaml.cs">
+      <DependentUpon>AdminUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminView\EditClassSubjectUserControl.xaml.cs">
+      <DependentUpon>EditClassSubjectUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminView\EditClassUserControl.xaml.cs">
+      <DependentUpon>EditClassUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminView\EditStudentUserControl.xaml.cs">
+      <DependentUpon>EditStudentUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminView\EditTeacherSubjectUserControl.xaml.cs">
+      <DependentUpon>EditTeacherSubjectUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminView\EditTeacherUserControl.xaml.cs">
+      <DependentUpon>EditTeacherUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogInView\LogInUserControl.xaml.cs">
+      <DependentUpon>LogInUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Switcher.cs" />
+    <Compile Include="Views\MasterView\MasterUserControl.xaml.cs">
+      <DependentUpon>MasterUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StudentView\AbsenceUserControl.xaml.cs">
+      <DependentUpon>AbsenceUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StudentView\GradeUserControl.xaml.cs">
+      <DependentUpon>GradeUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StudentView\MaterialUserControl.xaml.cs">
+      <DependentUpon>MaterialUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StudentView\StudentUserControl.xaml.cs">
+      <DependentUpon>StudentUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TeacherView\AbsenceUserControl.xaml.cs">
+      <DependentUpon>AbsenceUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TeacherView\GradeUserControl.xaml.cs">
+      <DependentUpon>GradeUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TeacherView\MaterialUserControl.xaml.cs">
+      <DependentUpon>MaterialUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TeacherView\TeacherUserControl.xaml.cs">
+      <DependentUpon>TeacherUserControl.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Configuration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminView\AddClassUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminView\AddStudentUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminView\AddTeacherSubjectUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminView\AddTeacherUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminView\AdminUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminView\EditClassSubjectUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminView\EditClassUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminView\EditStudentUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminView\EditTeacherSubjectUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminView\EditTeacherUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogInView\LogInUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\MainWindow\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\MasterView\MasterUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StudentView\AbsenceUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StudentView\GradeUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StudentView\MaterialUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\StudentView\StudentUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TeacherView\AbsenceUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TeacherView\GradeUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TeacherView\MaterialUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TeacherView\TeacherUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="Models\SchoolDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SchoolDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\SchoolDB.edmx.diagram">
+      <DependentUpon>SchoolDB.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\SchoolDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SchoolDB.edmx</DependentUpon>
+      <LastGenOutput>SchoolDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\SchoolDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SchoolDB.edmx</DependentUpon>
+      <LastGenOutput>SchoolDB.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

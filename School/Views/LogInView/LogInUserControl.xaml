@@ -1,0 +1,120 @@
+﻿<UserControl x:Class="School.Views.LogInView.LogInUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:School.ViewModels.UsersControl.LogIn"
+             mc:Ignorable="d" 
+             Style="{StaticResource MyUserControlStyle}">
+    <UserControl.DataContext>
+        <local:LogInUserControlVM/>
+    </UserControl.DataContext>
+
+    <Grid Style="{StaticResource MyGridStyle}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="150"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel 
+            Grid.Row="0" 
+            Grid.Column="0" 
+            Grid.ColumnSpan="2">
+            <Menu 
+                IsMainMenu="True" 
+                Grid.ColumnSpan="8">
+                <MenuItem Header="_File">
+                    <MenuItem 
+                        Header="_Exit" 
+                        Command="{Binding OpenUserControlCommand}" 
+                        CommandParameter="1"/>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+
+
+        <TextBlock  
+            Grid.Row="1" 
+            Height="41" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center" 
+            Text="Login:"  
+            FontSize="20" 
+            TextAlignment="Center" 
+            FontStretch="ExtraCondensed"  
+            Width="90" Grid.Column="1" Margin="88,0,622,0"/>
+
+        <TextBlock
+            Grid.Row="2" 
+            Grid.Column="0" 
+            Height="42"
+            FontSize="15"
+            HorizontalAlignment="Center" 
+            Margin="288,31,23,0" 
+            Text="Username" 
+            TextAlignment="Center"
+            VerticalAlignment="Top"
+            Width="89" />
+
+        <TextBlock 
+            Grid.Row="2" 
+            Grid.Column="0"  
+            Height="40" 
+            FontSize="15"
+            HorizontalAlignment="Center"
+            Margin="300,100,23,0" 
+            Text="Password" 
+            VerticalAlignment="Top" 
+            Width="77" />
+
+        <TextBox
+            Grid.Row="2"
+            Grid.Column="1"
+            Height="43" 
+            HorizontalAlignment="Left"
+            Margin="0,30,0,0"
+            Name="textBoxEmail"
+            Text="DinuIonut"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            VerticalAlignment="Top" 
+            Width="257" />
+
+        <PasswordBox 
+            Grid.Row="2" 
+            Grid.Column="1" 
+            Height="41" 
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center"
+            HorizontalAlignment="Left" 
+            Margin="0,100,0,0" 
+            Password="1q2w3e"
+            Name="passwordBox" 
+            VerticalAlignment="Top" 
+            Width="257" />
+        <Button 
+            Grid.Row="3"
+            Grid.Column="1"
+            Content="Login" 
+            Height="57" 
+            HorizontalAlignment="Left"
+            Margin="74,34,0,0"
+            Background="black"
+            Foreground="White"
+            Name="buttonLogIn" 
+            VerticalAlignment="Top"
+            Width="104"
+            Command="{Binding OpenUserControlCommand}" 
+            CommandParameter="2" >
+        </Button>
+
+    </Grid>
+</UserControl>

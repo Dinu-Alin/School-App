@@ -1,0 +1,364 @@
+﻿<UserControl x:Class="School.Views.TeacherView.MaterialUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:School.ViewModels.UsersControl.Teacher"
+             xmlns:local_convert ="clr-namespace:School.Converters"
+             xmlns:acb="clr-namespace:AttachedCommandBehavior;assembly=AttachedCommandBehavior"
+             mc:Ignorable="d" 
+             Style="{StaticResource MyUserControlStyle}">
+
+    <UserControl.Resources>
+        <local_convert:MaterialConverter x:Key="MaterialConverter"/>
+    </UserControl.Resources>
+
+    <UserControl.DataContext>
+        <local:MaterialUserControlVM/>
+    </UserControl.DataContext>
+
+    <Grid Style="{StaticResource MyGridStyle}">
+
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="250"></RowDefinition>
+            <RowDefinition Height="200"></RowDefinition>
+            <RowDefinition Height="200"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel 
+            Grid.Row="0"
+            Grid.ColumnSpan="4">
+            <Menu 
+                IsMainMenu="True" 
+                Grid.ColumnSpan="8">
+                <MenuItem 
+                    Header="_File">
+                    <MenuItem 
+                        Header="_Back" 
+                        Command="{Binding OpenUserControlCommand}" 
+                        CommandParameter="1"/>
+                    <MenuItem 
+                        Header="_Master" 
+                        Command="{Binding OpenUserControlCommand}" 
+                        CommandParameter="2"/>
+                    <MenuItem 
+                        Header="_Log out" 
+                        Command="{Binding OpenUserControlCommand}" 
+                        CommandParameter="3"/>
+                    <MenuItem 
+                        Header="_Exit"
+                        Command="{Binding OpenUserControlCommand}" 
+                        CommandParameter="4"/>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+
+        <TextBlock  
+            Grid.Row="1" 
+            Grid.ColumnSpan="2" 
+            Grid.Column="2"
+            Height="32" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center" 
+            Text="List of materials:"  
+            FontSize="20" 
+            TextAlignment="Center" 
+            FontStretch="ExtraCondensed"  
+            Width="Auto"/>
+
+        <WrapPanel
+            Grid.Row ="2" 
+            Grid.Column="2" 
+            Grid.ColumnSpan="2" 
+            Margin="25,0,0,0">
+            <WrapPanel>
+                <Label
+                    Content="Id" 
+                    Height="31" 
+                    Width="30" 
+                    BorderThickness="0" />
+                <Label 
+                    Content="Type" 
+                    Height="31" 
+                    Width="70" 
+                    BorderThickness="0"/>
+                <Label 
+                    Content="Link" 
+                    Height="31" 
+                    Width="250" 
+                    BorderThickness="0"/>
+
+            </WrapPanel>
+            <ListBox 
+            Grid.Row ="2" 
+            Grid.ColumnSpan="2" 
+            Name="listMaterials" 
+            ItemsSource="{Binding Materials}" 
+            Width="350" 
+            Height="220">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <TextBlock 
+                                Text="{Binding IdMaterial}"
+                                Height="31" 
+                                Name="txtIdMaterial" 
+                                Width="30"/>
+                            <TextBlock 
+                                Text="{Binding Type}" 
+                                Height="31" 
+                                Name="txtTypeMaterial"  
+                                Width="70"/>
+                            <TextBlock 
+                                Name="txtLinkMaterial" 
+                                Text="{Binding Link}" 
+                                Height="31" 
+                                Width="230"
+                                />
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </WrapPanel>
+        <TextBlock  
+            Grid.Row="1" 
+            Grid.Column="0" 
+            Grid.ColumnSpan="2" 
+            Height="32" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center" 
+            Text="List of subjects:"  
+            FontSize="20" 
+            TextAlignment="Center" 
+            FontStretch="ExtraCondensed" 
+            Width="Auto"/>
+
+        <WrapPanel
+            Grid.Row ="2" 
+            Grid.Column="0" 
+            Grid.ColumnSpan="2" 
+            Margin="25,0,25,0">
+            <WrapPanel>
+                <Label
+                    Content="Id" 
+                    Height="31" 
+                    Width="40" 
+                    BorderThickness="0" />
+                <Label 
+                    Content="Name" 
+                    Height="31" 
+                    Width="150" 
+                    BorderThickness="0"/>
+
+                <Label 
+                    Content="Term" 
+                    Height="31" 
+                    Width="70" 
+                    BorderThickness="0"/>
+                <Label 
+                    Content="Id Class" 
+                    Height="31" 
+                    Width="70" 
+                    BorderThickness="0"/>
+            </WrapPanel>
+            <ListBox 
+            Grid.Row ="2" 
+            Grid.Column="2"
+            Grid.ColumnSpan="4" 
+            Name="listSubjects" 
+            ItemsSource="{Binding Subjects}"
+            Width="350" Height="220"
+            SelectedItem="{Binding Path=SelectedSubject, Mode=TwoWay}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <WrapPanel>
+                            <TextBlock
+                            Name="txtIdSubject"
+                            Text="{Binding IdSubject}"
+                            Height="31"
+                            Width="40"/>
+                            <TextBlock 
+                            Name="txtNameSubject"  
+                            Text="{Binding Name}" 
+                            Height="31" 
+                            Width="150"/>
+                            <TextBlock
+                            Name="txtTermSubject" 
+                            Text="{Binding Term}"
+                            Height="31" 
+                            Width="70"/>
+                            <TextBlock
+                            Name="txtIdClass" 
+                            Text="{Binding FkClass}"
+                            Height="31" 
+                            Width="70"/>
+                        </WrapPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <acb:CommandBehaviorCollection.Behaviors>
+                    <acb:BehaviorBinding Event="SelectionChanged" Command="{Binding LoadMaterials}"/>
+                </acb:CommandBehaviorCollection.Behaviors>
+            </ListBox>
+        </WrapPanel>
+        <StackPanel 
+            Grid.Row="3"
+            Grid.RowSpan="2"
+            Grid.Column="0"  
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center" Margin="51,148,51,111">
+            <TextBlock  
+                Height="32" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                Margin="0,0,0,0" 
+                Text="Id material:"  
+                FontSize="20" 
+                TextAlignment="Center" 
+                FontStretch="ExtraCondensed"  
+                Width="Auto"/>
+            <TextBlock  
+                Height="32" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                Margin="0,5,0,0" 
+                Text="Type:"  
+                FontSize="20" 
+                TextAlignment="Center" 
+                FontStretch="ExtraCondensed" 
+                Width="Auto"/>
+            <TextBlock 
+                Height="32"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Margin="0,5,0,0"
+                Text="Link:"  
+                FontSize="20"
+                TextAlignment="Center" 
+                FontStretch="ExtraCondensed"  
+                Width="Auto"/>
+            <TextBlock  
+                Height="32"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Margin="0,5,0,0" 
+                FontSize="20"
+                TextAlignment="Center"
+                FontStretch="ExtraCondensed"
+                Width="Auto"/>
+
+
+
+        </StackPanel>
+
+        <StackPanel 
+            Grid.Row="3" 
+            Grid.RowSpan="2"
+            Grid.Column="1" 
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center">
+            <TextBox 
+                Name="textBoxIdMaterial"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center" 
+                Margin="0,0,0,0" 
+                 Background="Black"
+                Foreground="White"
+                Width="300"
+                Height="32"
+                Text="{Binding ElementName=listMaterials, Path=SelectedItem.IdMaterial}"
+                />
+            <TextBox 
+                Name="textBoxTypeMaterial"
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center"
+                 Background="Black"
+                Foreground="White"
+                Margin="0,5,0,0" 
+                Width="300" 
+                Height="32"
+                Text="{Binding ElementName=listMaterials, Path=SelectedItem.Type}"
+                />
+            <TextBox 
+                Name="textBoxLinkMaterial"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center" 
+                 Background="Black"
+                Foreground="White"
+                Margin="0,5,0,0"
+                Width="300" 
+                Height="32" 
+                Text="{Binding ElementName=listMaterials, Path=SelectedItem.Link}"
+                />
+
+
+        </StackPanel>
+
+        <StackPanel 
+            Grid.Row="3"
+            Grid.RowSpan="2"
+            Grid.Column="3"  
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center" Margin="0,153,51,119">
+            <Button 
+                Content="Edit material"
+                 Background="Black"
+                Foreground="White"
+                Height="25" 
+                Margin="0,0,0,0" 
+                Width="150"
+                Command="{Binding EditStudent}">
+                <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource MaterialConverter}">
+                        <Binding ElementName="textBoxIdMaterial" Path="Text"/>
+                        <Binding ElementName="textBoxTypeMaterial" Path="Text"/>
+                        <Binding ElementName="textBoxLinkMaterial" Path="Text"/>
+                    </MultiBinding>
+                </Button.CommandParameter>
+            </Button>
+            <Button 
+                Content="Delete material" 
+                Height="25" 
+                Margin="0,10,0,0" 
+                Width="150" 
+                 Background="Black"
+                Foreground="White"
+                Command="{Binding DeleteStudent}" >
+                <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource MaterialConverter}">
+                        <Binding ElementName="textBoxIdMaterial" Path="Text"/>
+                        <Binding ElementName="textBoxTypeMaterial" Path="Text"/>
+                        <Binding ElementName="textBoxLinkMaterial" Path="Text"/>
+                    </MultiBinding>
+                </Button.CommandParameter>
+            </Button>
+            <Button 
+                Content="Add material" 
+                Height="25" 
+                Margin="0,10,0,0" 
+                 Background="Black"
+                Foreground="White"
+                Width="150" 
+                Command="{Binding OpenUserControlCommand}" 
+                CommandParameter="7"/>
+            <Button 
+                Content="Save material" 
+                Height="25" 
+                Margin="0,10,0,0" 
+                Width="150" 
+                Command="{Binding OpenUserControlCommand}" 
+                CommandParameter="8" 
+                Visibility ="Hidden"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

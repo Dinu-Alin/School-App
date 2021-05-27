@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3f27edd4dd3c4bd9a9b11393065f3db1" Name="Diagram1">
+        <EntityTypeShape EntityType="SchoolDBModel.Absence" Width="1.5" PointX="9.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolDBModel.Admin" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolDBModel.Assignment" Width="1.5" PointX="7.5" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolDBModel.Class" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolDBModel.Grade" Width="1.5" PointX="15" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolDBModel.Material" Width="1.5" PointX="9.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolDBModel.Person" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolDBModel.Situation_Subject" Width="1.5" PointX="12.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolDBModel.Student" Width="1.5" PointX="7.5" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolDBModel.Subject" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolDBModel.Teacher" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolDBModel.Teacher_Subject" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <AssociationConnector Association="SchoolDBModel.FK_Absence_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolDBModel.FK_Absence_Teacher_Subject" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolDBModel.FK_Admin_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolDBModel.FK_Assignment_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolDBModel.FK_Assignment_Teacher_Subject" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolDBModel.FK_Material_Assignment" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolDBModel.FK_Class_Teacher" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolDBModel.FK_Student_Class" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolDBModel.FK_Grade_Situation_Subject" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolDBModel.FK_Student_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolDBModel.FK_Teacher_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolDBModel.FK_Situation_Subject_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolDBModel.FK_Situation_Subject_Teacher_Subject" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolDBModel.FK_Teacher_Subject_Subject" ManuallyRouted="false" />
+        <AssociationConnector Association="SchoolDBModel.FK_Teacher_Subject_Teacher" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
